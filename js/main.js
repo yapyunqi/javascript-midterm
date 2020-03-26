@@ -4,7 +4,9 @@ var parseData = function(data){return parsed=JSON.parse(data)};
 var createMarkers = function(crime){
   var lat = crime.Latitude;
   var long = crime.Longitude;
-  var marker = L.marker([lat,long]);
+  var type = crime.Category;
+  var month = crime.Month;
+  var marker = L.marker([lat,long]).bindPopup("<dl><dt><b>Crime Type: </b></dt>" + crime.Category + "<dt><b>Year-Month: </b></dt>" + crime.Month);
   return marker;
 };
 
