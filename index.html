@@ -2,7 +2,7 @@
 <html>
   <head>
     <!--stylesheet imports-->
-    <link rel="stylesheet" href="leaflet.css" />
+    <link rel="stylesheet" href="css/leaflet.css" />
   </head>
   <body>
     <!--left panel-->
@@ -13,10 +13,11 @@
     </div>
 
     <!--javascript imports-->
-    <script src="leaflet.js"></script>
-    <script src="crime_data.js"></script>
+    <script src="js/jquery-2.2.0.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/leaflet.js"></script>
 
-    <!--code starts here-->
+    <!--leaflet settings-->
     <script>
       var map = L.map('map', {
         center: [39.9522, -75.1639],
@@ -30,11 +31,14 @@
         ext: 'png'
       }).addTo(map);
     </script>
+
+    <!--loading my data-->
     <script>
+      var promise = $.ajax('https://raw.githubusercontent.com/yapyunqi/javascript-midterm/master/data.geojson?token=ALGWDFWD7Z574MOBYWAQHQK6QYX34');
+      promise.done(console.log); // this prints it in json form
 
-    var jsonToCsv = function(json) { console.log(json); };
-    var addMarkers = function(map) {};
-
-// `healthCenters` is defined in health_centers.js
-    jsonToCsv(healthCenters);
-    addMarkers(map);
+      var unparsed; // converting to csv
+      promise.done(x=> unparsed = x); // saving the json as a new variable 'unparsed'
+      parsed = JSON.parse(unparsed); // parsing 'unparsed'
+      console.log(parsed);
+    </script>
