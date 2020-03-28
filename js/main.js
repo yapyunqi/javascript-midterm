@@ -1,7 +1,7 @@
 // leaflet setup
 var map = L.map('map', {
-  center: [52.206311, 0.120487],
-  zoom: 13
+  center: [52.446255, -0.047214],
+  zoom: 9
 });
 var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
   attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -16,8 +16,9 @@ var markerClusters = L.markerClusterGroup();
 
 for (var i = 0; i < markers.length; i++ ) {
   var popup = '<b>Crime Type:</b> ' + markers[i].Category +
-              '<br/><b>Year-Month:</b> ' + markers[i].Month +
-              '<br/><b>Outcome Status:</b> ' + markers[i]['Outcome status'];
+              '<br/><b>Month:</b> ' + markers[i].Month +
+              '<br/><b>Outcome Status:</b> ' + markers[i]['Outcome status'] +
+              '<br/><b>Neighborhood:</b> ' + markers[i].Neighborhood;
 
   var m = L.marker([markers[i].Latitude, markers[i].Longitude])
                   .bindPopup(popup);
@@ -34,7 +35,7 @@ map.addLayer(markerClusters);
 //creating slides
 var slides = [
       { title: "Crime Map",
-        description: "This is a map of all crimes committed in the English county of Cambridgeshire, as recorded by the local constabulary between the months of January and February 2020.",
+        description: "This is a map of all crimes committed in the English county of Cambridgeshire, as recorded by the local constabulary between the months of December 2019 and February 2020.",
         instructions: "Please click on pop-ups for more information about the type of crime, month in which the crime was committed, and the outcome status."},
       { title: "slide 2",
         description: "the second description",
