@@ -32,20 +32,35 @@ map.addLayer(markerClusters);
 var slides = [
       { title: "Crime Map (All)",
         description: "This is a geographical visualization of all crimes committed in the English county of Cambridgeshire, as recorded by the local constabulary between December 2019 and February 2020.",
-        instructions: "Click on numbered clusters to zoom in - blue polygons that appear represent bounds of markers within the cluster. At the highest zoom level, clusters are spiderfied such that each arm represents one crime. Clicking on each arm will reveal information about Crime Type, Month, Outcome Status, and Neighborhood."},
-      { title: "slide 2",
+        instructions: "Click on numbered clusters to zoom in - blue polygons that appear represent bounds of markers within the cluster. At the highest zoom level, clusters are spiderfied such that each arm represents one crime. Clicking on each arm will reveal information about Crime Type, Month, Outcome Status, and Neighborhood.",
+        latitude: 52.446255,
+        longitude: -0.047214,
+        zoom: 9},
+      { title: "Crime Map (Cambridge)",
         description: "the second description",
-        instructions: "instructions here"},
-      { title: "slide 3",
+        instructions: "instructions here",
+        latitude: 52.206659,
+        longitude: 0.121788,
+        zoom: 13},
+      { title: "Crime Map (Cambridge City Center)",
         description: "the third description",
-        instructions: "instructions here"},
-      { title: "slide 4",
+        instructions: "instructions here",
+        latitude: 52.205272,
+        longitude: 0.121788,
+        zoom: 16},
+      { title: "Crime Map (Peterborough)",
         description: "the fourth description",
-        instructions: "instructions here"},
-      { title: "slide5",
+        instructions: "instructions here",
+        latitude: 52.579009,
+        longitude: -0.235229,
+        zoom: 12.5},
+      { title: "Crime Map (Peterborough City Center)",
         description: "the fifth description",
-        instructions: "instructions here"},
-    ];
+        instructions: "instructions here",
+        latitude: 52.574436,
+        longitude: -0.241257,
+        zoom: 16},
+      ];
 
 var currentSlide = 0;
 
@@ -53,19 +68,26 @@ var loadSlide = function(slide) {
   $('#title').text(slide.title);
   $('#description').text(slide.description);
   $('#instructions').text(slide.instructions);
+  map.flyTo([slide.latitude, slide.longitude], slide.zoom);
+  if (currentSlide == 0) {
+    $('#nextButton').show();
+    $('#prevButton').hide();
+  } else if (currentSlide == slides.length -1) {
+    $('#prevButton').show();
+    $('#nextButton').hide();
+  } else {
+    $('#nextButton').show();
+    $('#prevButton').show();
+  }
 };
 
-//to make the 'next' button work
+//defining the 'next' button
 var next = function() {
   if (currentSlide == slides.length - 1) { }
   else {
-    $('#nextButton').show();
     currentSlide = currentSlide + 1;
     loadSlide(slides[currentSlide]);
     console.log("current slide no.:" + currentSlide);
-  }
-  if (currentSlide == slides.length - 1) {
-    $('#nextButton').hide();
   }
 };
 
@@ -73,17 +95,13 @@ $('#nextButton').click(function(e) {
   next();
 });
 
-//to make the 'prev' button work
+//defining the 'previous' button
 var prev = function() {
   if (currentSlide == 0) { }
   else {
-    $('#prevButton').show();
     currentSlide = currentSlide - 1;
     loadSlide(slides[currentSlide]);
     console.log("current slide no.:" + currentSlide);
-  }
-  if (currentSlide == 0) {
-    $('#prevButton').hide();
   }
 };
 

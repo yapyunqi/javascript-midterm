@@ -28,7 +28,7 @@ h2 {
   color:#333333;
   font-family:'Lato';
   font-size:28px;
-  padding-left:20px;
+  padding-left:25px;
   padding-top:15px
 }
 
@@ -79,6 +79,7 @@ h2 {
 }
 
 #prevButton {
+  display: none;
   width:100px;
   background-color:#333333;
   color:#f2f2f2;
