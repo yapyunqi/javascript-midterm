@@ -1,46 +1,103 @@
-body {
-    padding: 0;
-    overflow: hidden;
-    font-family: helvetica, arial, sans-serif;
+.header {
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:10%;
+  background-color:#333333
 }
 
 h1 {
-  font: helvetica;
-  font-size: 24px;
-  color: white;
-}
-
-h2 {
-  font: helvetica;
-  font-size: 16px;
-  color: white;
-}
-
-.header {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 80px;
-  background-color: black;
+  color:white;
+  font-family:'Lato';
+  size:30px;
+  padding-left:20px;
+  padding-bottom:15px
 }
 
 .sidebar {
-    position: absolute;
-    left: 0px;
-    width: 400px;
-    top: 80px;
-    bottom: 0;
-    overflow-y: auto;
-    padding: 20px;
-    font-size: 16px;
-    background-color: white;
+  position:absolute;
+  left:0px;
+  width:30%;
+  top:10%;
+  bottom:0px;
+  background-color:#f2f2f2
+}
+
+h2 {
+  color:#333333;
+  font-family:'Lato';
+  font-size:28px;
+  padding-left:20px;
+  padding-top:15px
+}
+
+#description {
+  color:#4C4C4C;
+  font-family:'Lato';
+  font-size:18px;
+  font-style: oblique;
+  padding-left:25px;
+  padding-right:35px;
+  padding-top:10px;
+  text-align:justify
+}
+
+#instructions {
+  color:#4C4C4C;
+  font-family:'Lato';
+  font-size:14px;
+  padding-left:25px;
+  padding-right:35px;
+  padding-top:10px;
+  text-align:justify
+}
+
+.buttons{
+  position:absolute;
+  left:6%;
+  width:20%;
+  top:80%;
+  background-color:#f2f2f2;
+  z-index:20
+}
+
+#nextButton {
+  width:100px;
+  background-color:#333333;
+  color:#f2f2f2;
+  font-family:'Lato';
+  font-size:14px;
+  padding:5px;
+  border-radius:8px
+}
+
+#nextButton:hover {
+  background-color:#f2f2f2;
+  color:#333333;
+  border-color:#333333
+}
+
+#prevButton {
+  width:100px;
+  background-color:#333333;
+  color:#f2f2f2;
+  font-family:'Lato';
+  font-size:14px;
+  padding:5px;
+  border-radius:8px
+}
+
+#prevButton:hover {
+  background-color:#f2f2f2;
+  color:#333333;
+  border-color:#333333;
 }
 
 .map {
-    position: absolute;
-    left: 400px;
-    height: 100%;
-    width: 100%;
-    top: 80px;
+  position:absolute;
+  right:0px;
+  width:70%;
+  top:10%;
+  bottom:0px
 }

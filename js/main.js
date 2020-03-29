@@ -11,7 +11,7 @@ var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{
   ext: 'png'
 }).addTo(map);
 
-// plotting markers etc
+// plotting on leaflet
 var markerClusters = L.markerClusterGroup();
 
 for (var i = 0; i < markers.length; i++ ) {
@@ -28,70 +28,65 @@ for (var i = 0; i < markers.length; i++ ) {
 
 map.addLayer(markerClusters);
 
-/* =====================
- CODE EXECUTED HERE!
-===================== */
-
 //creating slides
 var slides = [
-      { title: "Crime Map",
-        description: "This is a map of all crimes committed in the English county of Cambridgeshire, as recorded by the local constabulary between the months of December 2019 and February 2020.",
-        instructions: "Please click on pop-ups for more information about the type of crime, month in which the crime was committed, and the outcome status."},
+      { title: "Crime Map (All)",
+        description: "This is a geographical visualization of all crimes committed in the English county of Cambridgeshire, as recorded by the local constabulary between December 2019 and February 2020.",
+        instructions: "Click on numbered clusters to zoom in - blue polygons that appear represent bounds of markers within the cluster. At the highest zoom level, clusters are spiderfied such that each arm represents one crime. Clicking on each arm will reveal information about Crime Type, Month, Outcome Status, and Neighborhood."},
       { title: "slide 2",
         description: "the second description",
         instructions: "instructions here"},
       { title: "slide 3",
-        description: "the second description",
+        description: "the third description",
         instructions: "instructions here"},
       { title: "slide 4",
-        description: "the second description",
+        description: "the fourth description",
         instructions: "instructions here"},
       { title: "slide5",
-        description: "the second description",
+        description: "the fifth description",
         instructions: "instructions here"},
     ];
-    var currentSlide = 0;
 
-    var loadSlide = function(slide) {
-      $('#title').text(slide.title);
-      $('#description').text(slide.description);
-      $('#instructions').text(slide.instructions);
-    };
+var currentSlide = 0;
+
+var loadSlide = function(slide) {
+  $('#title').text(slide.title);
+  $('#description').text(slide.description);
+  $('#instructions').text(slide.instructions);
+};
 
 //to make the 'next' button work
-    var next = function() {
-      if (currentSlide == slides.length - 1) {
-      } else {
-        $('#nextButton').show();
-        currentSlide = currentSlide + 1;
-        loadSlide(slides[currentSlide]);
-        console.log("current slide no.:" + currentSlide);
-      }
+var next = function() {
+  if (currentSlide == slides.length - 1) { }
+  else {
+    $('#nextButton').show();
+    currentSlide = currentSlide + 1;
+    loadSlide(slides[currentSlide]);
+    console.log("current slide no.:" + currentSlide);
+  }
+  if (currentSlide == slides.length - 1) {
+    $('#nextButton').hide();
+  }
+};
 
-      if (currentSlide == slides.length - 1) {
-        $('#nextButton').hide();
-      }
-    };
-
-    $('#nextButton').click(function(e) {
-      next();
-    });
+$('#nextButton').click(function(e) {
+  next();
+});
 
 //to make the 'prev' button work
-    var prev = function() {
-      if (currentSlide == 0) {
-      } else {
-        $('#prevButton').show();
-        currentSlide = currentSlide - 1;
-        loadSlide(slides[currentSlide]);
-        console.log("current slide no.:" + currentSlide);
-      }
+var prev = function() {
+  if (currentSlide == 0) { }
+  else {
+    $('#prevButton').show();
+    currentSlide = currentSlide - 1;
+    loadSlide(slides[currentSlide]);
+    console.log("current slide no.:" + currentSlide);
+  }
+  if (currentSlide == 0) {
+    $('#prevButton').hide();
+  }
+};
 
-      if (currentSlide == 0) {
-        $('#prevButton').hide();
-      }
-    };
-
-    $('#prevButton').click(function(e) {
-      prev();
-    });
+$('#prevButton').click(function(e) {
+  prev();
+});
